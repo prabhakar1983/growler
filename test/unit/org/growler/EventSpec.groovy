@@ -40,6 +40,28 @@ class EventSpec extends Specification {
         event.errors.errorCount == 1
     }
 
+    void "test a duplicate name"() {
+        when: "duplicate name"
+            mockForConstraintsTests(Event, [createValidEvent()])
+            def event = createValidEvent()
+
+        then: "validate() is false w/1 error"
+            !event.validate()
+            event.hasErrors()
+            event.errors.errorCount == 1
+    }
+
+    void "test a null location"() {
+        when: "null location"
+            def event = createValidEvent()
+            event.location = null
+
+        then: "validate() is true"
+            event.validate()
+            !event.hasErrors()
+            event.errors.errorCount == 0
+    }
+
     void "test null url"() {
         when: "null url"
         def event = createValidEvent()

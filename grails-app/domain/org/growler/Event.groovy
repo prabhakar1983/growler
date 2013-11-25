@@ -19,8 +19,8 @@ class Event {
     }
 
     static constraints = {
-        name blank:false, maxSize:256
-        location()
+        name blank:false, maxSize:256, unique:true
+        location(nullable:true)
         status()
         url url:true, nullable:true
         eventDays nullable:true
