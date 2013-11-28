@@ -21,6 +21,8 @@ class Biography {
         lastUpdatedBy nullable: true, display: false
     }
 
+    static belongsTo = [member:Member]
+
 //    def beforeUpdate() {
 //        lastUpdatedBy = securityService.currentAuthenticatedUsername()
 //    }

@@ -59,6 +59,15 @@
 				</li>
 				</g:if>
 			
+				<g:if test="${memberInstance?.dateCreated}">
+				<li class="fieldcontain">
+					<span id="dateCreated-label" class="property-label"><g:message code="member.dateCreated.label" default="Date Created" /></span>
+					
+						<span class="property-value" aria-labelledby="dateCreated-label"><g:formatDate date="${memberInstance?.dateCreated}" /></span>
+					
+				</li>
+				</g:if>
+			
 				<g:if test="${memberInstance?.lastUpdate}">
 				<li class="fieldcontain">
 					<span id="lastUpdate-label" class="property-label"><g:message code="member.lastUpdate.label" default="Last Update" /></span>
@@ -73,15 +82,6 @@
 					<span id="lastUpdatedBy-label" class="property-label"><g:message code="member.lastUpdatedBy.label" default="Last Updated By" /></span>
 					
 						<span class="property-value" aria-labelledby="lastUpdatedBy-label"><g:fieldValue bean="${memberInstance}" field="lastUpdatedBy"/></span>
-					
-				</li>
-				</g:if>
-			
-				<g:if test="${memberInstance?.dateCreated}">
-				<li class="fieldcontain">
-					<span id="dateCreated-label" class="property-label"><g:message code="member.dateCreated.label" default="Date Created" /></span>
-					
-						<span class="property-value" aria-labelledby="dateCreated-label"><g:formatDate date="${memberInstance?.dateCreated}" /></span>
 					
 				</li>
 				</g:if>

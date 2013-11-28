@@ -27,6 +27,8 @@ class Video {
         lastUpdatedBy nullable: true, display: false
     }
 
+    static belongsTo = [presentation:Presentation]
+
 //    def beforeUpdate() {
 //        lastUpdatedBy = securityService.currentAuthenticatedUsername()
 //    }

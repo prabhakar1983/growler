@@ -34,6 +34,9 @@ class Presentation {
         lastUpdatedBy nullable: true, display: false
     }
 
+    static belongsTo = [event:Event,speaker:Speaker]
+
+
 //    def beforeUpdate() {
 //        lastUpdatedBy = securityService.currentAuthenticatedUsername()
 //    }

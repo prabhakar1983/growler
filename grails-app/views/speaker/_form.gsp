@@ -7,7 +7,7 @@
 		<g:message code="speaker.firstName.label" default="First Name" />
 		<span class="required-indicator">*</span>
 	</label>
-	<g:textField name="firstName" required="" value="${speakerInstance?.firstName}"/>
+	<g:textField name="firstName" maxlength="64" required="" value="${speakerInstance?.firstName}"/>
 </div>
 
 <div class="fieldcontain ${hasErrors(bean: speakerInstance, field: 'middleName', 'error')} ">
@@ -15,7 +15,7 @@
 		<g:message code="speaker.middleName.label" default="Middle Name" />
 		
 	</label>
-	<g:textField name="middleName" value="${speakerInstance?.middleName}"/>
+	<g:textField name="middleName" maxlength="64" value="${speakerInstance?.middleName}"/>
 </div>
 
 <div class="fieldcontain ${hasErrors(bean: speakerInstance, field: 'lastName', 'error')} required">
@@ -23,7 +23,7 @@
 		<g:message code="speaker.lastName.label" default="Last Name" />
 		<span class="required-indicator">*</span>
 	</label>
-	<g:textField name="lastName" required="" value="${speakerInstance?.lastName}"/>
+	<g:textField name="lastName" maxlength="64" required="" value="${speakerInstance?.lastName}"/>
 </div>
 
 <div class="fieldcontain ${hasErrors(bean: speakerInstance, field: 'email', 'error')} required">
@@ -103,7 +103,7 @@
 		<g:message code="speaker.gravatarUrl.label" default="Gravatar Url" />
 		
 	</label>
-	<g:field type="url" name="gravatarUrl" value="${speakerInstance?.gravatarUrl}"/>
+	<g:textArea name="gravatarUrl" cols="40" rows="5" maxlength="256" value="${speakerInstance?.gravatarUrl}"/>
 </div>
 
 <div class="fieldcontain ${hasErrors(bean: speakerInstance, field: 'bios', 'error')} ">
@@ -111,7 +111,16 @@
 		<g:message code="speaker.bios.label" default="Bios" />
 		
 	</label>
-	<g:select name="bios" from="${org.growler.Biography.list()}" multiple="multiple" optionKey="id" size="5" value="${speakerInstance?.bios*.id}" class="many-to-many"/>
+	
+<ul class="one-to-many">
+<g:each in="${speakerInstance?.bios?}" var="b">
+    <li><g:link controller="biography" action="show" id="${b.id}">${b?.encodeAsHTML()}</g:link></li>
+</g:each>
+<li class="add">
+<g:link controller="biography" action="create" params="['speaker.id': speakerInstance?.id]">${message(code: 'default.add.label', args: [message(code: 'biography.label', default: 'Biography')])}</g:link>
+</li>
+</ul>
+
 </div>
 
 <div class="fieldcontain ${hasErrors(bean: speakerInstance, field: 'presentations', 'error')} ">
@@ -119,14 +128,15 @@
 		<g:message code="speaker.presentations.label" default="Presentations" />
 		
 	</label>
-	<g:select name="presentations" from="${org.growler.Presentation.list()}" multiple="multiple" optionKey="id" size="5" value="${speakerInstance?.presentations*.id}" class="many-to-many"/>
-</div>
+	
+<ul class="one-to-many">
+<g:each in="${speakerInstance?.presentations?}" var="p">
+    <li><g:link controller="presentation" action="show" id="${p.id}">${p?.encodeAsHTML()}</g:link></li>
+</g:each>
+<li class="add">
+<g:link controller="presentation" action="create" params="['speaker.id': speakerInstance?.id]">${message(code: 'default.add.label', args: [message(code: 'presentation.label', default: 'Presentation')])}</g:link>
+</li>
+</ul>
 
-<div class="fieldcontain ${hasErrors(bean: speakerInstance, field: 'videos', 'error')} ">
-	<label for="videos">
-		<g:message code="speaker.videos.label" default="Videos" />
-		
-	</label>
-	<g:select name="videos" from="${org.growler.Video.list()}" multiple="multiple" optionKey="id" size="5" value="${speakerInstance?.videos*.id}" class="many-to-many"/>
 </div>
 

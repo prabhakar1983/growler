@@ -7,7 +7,7 @@
 		<g:message code="member.firstName.label" default="First Name" />
 		<span class="required-indicator">*</span>
 	</label>
-	<g:textField name="firstName" required="" value="${memberInstance?.firstName}"/>
+	<g:textField name="firstName" maxlength="64" required="" value="${memberInstance?.firstName}"/>
 </div>
 
 <div class="fieldcontain ${hasErrors(bean: memberInstance, field: 'middleName', 'error')} ">
@@ -15,7 +15,7 @@
 		<g:message code="member.middleName.label" default="Middle Name" />
 		
 	</label>
-	<g:textField name="middleName" value="${memberInstance?.middleName}"/>
+	<g:textField name="middleName" maxlength="64" value="${memberInstance?.middleName}"/>
 </div>
 
 <div class="fieldcontain ${hasErrors(bean: memberInstance, field: 'lastName', 'error')} required">
@@ -23,7 +23,7 @@
 		<g:message code="member.lastName.label" default="Last Name" />
 		<span class="required-indicator">*</span>
 	</label>
-	<g:textField name="lastName" required="" value="${memberInstance?.lastName}"/>
+	<g:textField name="lastName" maxlength="64" required="" value="${memberInstance?.lastName}"/>
 </div>
 
 <div class="fieldcontain ${hasErrors(bean: memberInstance, field: 'email', 'error')} required">

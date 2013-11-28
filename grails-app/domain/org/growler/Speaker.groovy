@@ -18,7 +18,7 @@ class Speaker extends Member {
     String lastUpdatedBy
 
 
-    static hasMany = [bios: Biography, presentations: Presentation, videos: Video]
+    static hasMany = [bios: Biography, presentations: Presentation]
 
     static mappings = {
     }
@@ -35,7 +35,6 @@ class Speaker extends Member {
         gravatarUrl nullable:true, url:true, maxSize: 256
         bios nullable:true
         presentations nullable:true
-        videos nullable:true
         dateCreated nullable: true, display: false
         lastUpdate nullable: true, display: false
         lastUpdatedBy nullable: true, display: false

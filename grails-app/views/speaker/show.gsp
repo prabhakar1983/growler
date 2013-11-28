@@ -59,6 +59,15 @@
 				</li>
 				</g:if>
 			
+				<g:if test="${speakerInstance?.dateCreated}">
+				<li class="fieldcontain">
+					<span id="dateCreated-label" class="property-label"><g:message code="speaker.dateCreated.label" default="Date Created" /></span>
+					
+						<span class="property-value" aria-labelledby="dateCreated-label"><g:formatDate date="${speakerInstance?.dateCreated}" /></span>
+					
+				</li>
+				</g:if>
+			
 				<g:if test="${speakerInstance?.lastUpdate}">
 				<li class="fieldcontain">
 					<span id="lastUpdate-label" class="property-label"><g:message code="speaker.lastUpdate.label" default="Last Update" /></span>
@@ -176,26 +185,6 @@
 						<g:each in="${speakerInstance.presentations}" var="p">
 						<span class="property-value" aria-labelledby="presentations-label"><g:link controller="presentation" action="show" id="${p.id}">${p?.encodeAsHTML()}</g:link></span>
 						</g:each>
-					
-				</li>
-				</g:if>
-			
-				<g:if test="${speakerInstance?.videos}">
-				<li class="fieldcontain">
-					<span id="videos-label" class="property-label"><g:message code="speaker.videos.label" default="Videos" /></span>
-					
-						<g:each in="${speakerInstance.videos}" var="v">
-						<span class="property-value" aria-labelledby="videos-label"><g:link controller="video" action="show" id="${v.id}">${v?.encodeAsHTML()}</g:link></span>
-						</g:each>
-					
-				</li>
-				</g:if>
-			
-				<g:if test="${speakerInstance?.dateCreated}">
-				<li class="fieldcontain">
-					<span id="dateCreated-label" class="property-label"><g:message code="speaker.dateCreated.label" default="Date Created" /></span>
-					
-						<span class="property-value" aria-labelledby="dateCreated-label"><g:formatDate date="${speakerInstance?.dateCreated}" /></span>
 					
 				</li>
 				</g:if>
